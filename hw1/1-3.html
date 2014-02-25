@@ -1,0 +1,80 @@
+
+
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<title>HW1-3 列出表單和表單控制項的所有性質</title>
+</head>
+
+<body>
+<h1>列出表單和表單控制項的所有性質</h1>
+<form action="mailto:test@cs.nthu.edu.tw" method="get">
+	Name: <input name="myname" size="10" maxlength="20" value="蕭亞軒" />
+</form>
+
+<script>
+function range(start, count) {
+        return Array.apply(0, Array(count)).map(function (e, i) { return i + start; });
+}
+function isPrime(n){
+	var i;
+	var s = Math.sqrt(n);
+	for(i=2;i<=s;i++){
+		if(n%i===0){
+			return false;
+		}
+	}
+	return true;
+}
+function create_element(tag_name, init_function){
+	var node = document.createElement(tag_name);
+	init_function(node);
+	return node;
+}
+function table_row(data, tag){
+	if(tag===undefined){
+		tag = "td";
+	}
+	return create_element("tr", function(tr){
+		range(0, data.length).forEach(function(i){
+			tr.appendChild(create_element(tag, function(e){
+				e.textContent = data[i]
+			}));
+		});
+	});
+}
+function getAttributes(ele){
+	var ret = [];
+	for(var i in range(0, ele.attributes.length)){
+		var attr = ele.attributes[i];
+		ret.push(attr);
+		console.log(attr.name, attr.value);
+	}
+	return ret;
+}
+
+range(0, document.forms.length).forEach(function(i){
+	var form = document.forms[i];
+	document.getElementsByTagName("body")[0].appendChild(create_element("div", function(div){
+		div.appendChild(create_element("h2", function(h2){
+			h2.textContent = "Form"
+		}));
+		div.appendChild(create_element("pre", function(pre){
+			pre.textContent = getAttributes(form).map(function(e){
+				return e.name + " = " + e.value;
+			}).join("\n");
+		}));
+		div.appendChild(create_element("h2", function(h2){
+			h2.textContent = "Control"
+		}));
+		div.appendChild(create_element("pre", function(pre){
+			pre.textContent = getAttributes(form[0]).map(function(e){
+				return e.name + " = " + e.value;
+			}).join("\n");
+		}));
+	}));
+});
+
+</script>
+</body>
+</html>

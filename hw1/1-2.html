@@ -1,0 +1,41 @@
+
+
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<title>HW1-2 檢查奇數或偶數</title>
+</head>
+
+<body>
+<a href="#" id="chk_link"><h1>檢查奇數或偶數</h1></a>
+<hr />
+
+<script>
+function range(start, count) {
+        return Array.apply(0, Array(count)).map(function (e, i) { return i + start; });
+}
+function isPrime(n){
+	var i;
+	var s = Math.sqrt(n);
+	for(i=2;i<=s;i++){
+		if(n%i===0){
+			return false;
+		}
+	}
+	return true;
+}
+window.onload = function(){
+	document.getElementById("chk_link").onclick = function(){
+		var n = prompt("Please input a number", "0");
+		n = parseInt(n);
+		if(isNaN(n)){
+			alert("Not a valid number");
+		}else{
+			alert(n % 2 === 0 ? (n + " is an even number"):(n + " is an odd number") )
+		}
+		console.log(n);
+	}
+}
+</script>
+</body>
+</html>
