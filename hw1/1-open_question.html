@@ -42,8 +42,19 @@ function table_row(data, tag){
 	});
 }
 
-document.getElementsByTagName("body")[0].appendChild(create_element("xmp", function(xmp){
-	xmp.textContent = create_element("center", function(center){
+String.prototype.escape = function() {
+    var tagsToReplace = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;'
+    };
+    return this.replace(/[&<>]/g, function(tag) {
+        return tagsToReplace[tag] || tag;
+    });
+};
+
+document.getElementsByTagName("body")[0].appendChild(create_element("div", function(div){
+	div.innerHTML = create_element("center", function(center){
 		center.appendChild(create_element("table", function(table){
 			table.appendChild(table_row(["編號", "質數值"]));
 			table.setAttribute("border", "1")
@@ -53,7 +64,7 @@ document.getElementsByTagName("body")[0].appendChild(create_element("xmp", funct
 				table.appendChild(e);
 			});
 		}));
-	}).outerHTML.replace(new RegExp(">","gm"), ">\n");
+	}).outerHTML.escape().replace(new RegExp("&gt;","gm"), "&gt;<br />");
 }));
 </script>
 </body>
