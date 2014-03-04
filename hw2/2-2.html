@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<title>HW2-2 五秒時間感的測驗</title>
+</head>
+
+<body>
+<h1>五秒時間感的測驗</h1>
+<hr />
+<form action="">
+<table>
+	<tr><td colspan="2"><input type="button" value="開始玩遊戲" name="trigger" id="trigger" /></td></tr>
+	<tr>
+		<td><label for="tries">嘗試次數</label></td>
+		<td><input type="text" id="tries" name="tries"></td>
+	</tr>
+	<tr>
+		<td><label for="time">按下時間</label></td>
+		<td><input type="text" id="time" name="time"></td>
+	</tr>
+	<tr>
+		<td><label for="delta">相差時間</label></td>
+		<td><input type="text" id="delta" name="delta"></td>
+	</tr>
+	<tr>
+		<td><label for="best">最佳紀錄</label></td>
+		<td><input type="text" id="best" name="best"></td>
+	</tr>
+</table>
+</form>
+
+<script src="lib.js"></script>
+<script>
+var start_time;
+var tries = 0;
+var best = 0;
+function handler_a(e){
+	var btn = document.getElementById("trigger");
+	btn.onclick=handler_b;
+	btn.setAttribute("value", "開始玩遊戲");
+	var curr_time = new Date();
+	update_pressed((curr_time - start_time)/1000);
+}
+function handler_b(){
+	var btn = document.getElementById("trigger");
+	btn.onclick=handler_a;
+	btn.setAttribute("value", "五秒後按我...");
+	start_time = new Date();
+}
+
+function update_pressed(seconds){
+	var delta = Math.abs(seconds - 5);
+	var best_delta = Math.abs(best - 5);
+	document.getElementById("time").setAttribute("value",seconds);
+	document.getElementById("delta").setAttribute("value",delta);
+	if(delta < best_delta){
+		best = delta;
+		alert("nice one");
+	}else{
+		alert("ahaah uccu");
+	}
+	tries = tries + 1;
+	update_value();
+}
+function update_value(){
+	document.getElementById("tries").setAttribute("value",tries);
+	document.getElementById("best").setAttribute("value",best);
+}
+window.onload = function(){
+	document.getElementById("trigger").onclick=handler_b;
+	update_value();
+}
+</script>
+</body>
+</html>
