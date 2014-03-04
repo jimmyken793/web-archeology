@@ -45,10 +45,9 @@ function table_row(data, tag){
 }
 function getAttributes(ele){
 	var ret = [];
-	for(var i in range(0, ele.attributes.length)){
-		var attr = ele.attributes[i];
-		ret.push(attr);
-		console.log(attr.name, attr.value);
+	for(var i in ele){
+		var attr = ele[i];
+		ret.push([i,attr]);
 	}
 	return ret;
 }
@@ -61,7 +60,7 @@ range(0, document.forms.length).forEach(function(i){
 		}));
 		div.appendChild(create_element("pre", function(pre){
 			pre.textContent = getAttributes(form).map(function(e){
-				return e.name + " = " + e.value;
+				return e[0] + " = " + e[1];
 			}).join("\n");
 		}));
 		div.appendChild(create_element("h2", function(h2){
@@ -69,7 +68,7 @@ range(0, document.forms.length).forEach(function(i){
 		}));
 		div.appendChild(create_element("pre", function(pre){
 			pre.textContent = getAttributes(form[0]).map(function(e){
-				return e.name + " = " + e.value;
+				return e[0] + " = " + e[1];
 			}).join("\n");
 		}));
 	}));

@@ -27,10 +27,10 @@ function isPrime(n){
 window.onload = function(){
 	document.getElementById("chk_link").onclick = function(){
 		var n = prompt("Please input a number", "0");
-		n = parseInt(n);
 		if(isNaN(n)){
 			alert("Not a valid number");
 		}else{
+			n = parseInt(n);
 			alert(n % 2 === 0 ? (n + " is an even number"):(n + " is an odd number") )
 		}
 		console.log(n);
