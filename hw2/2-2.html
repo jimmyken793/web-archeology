@@ -34,7 +34,7 @@
 <script>
 var start_time;
 var tries = 0;
-var best = 0;
+var best = null;
 function handler_a(e){
 	var btn = document.getElementById("trigger");
 	btn.onclick=handler_b;
@@ -51,10 +51,9 @@ function handler_b(){
 
 function update_pressed(seconds){
 	var delta = Math.abs(seconds - 5);
-	var best_delta = Math.abs(best - 5);
 	document.getElementById("time").setAttribute("value",seconds);
 	document.getElementById("delta").setAttribute("value",delta);
-	if(delta < best_delta){
+	if(best == null || delta < best){
 		best = delta;
 		alert("nice one");
 	}else{

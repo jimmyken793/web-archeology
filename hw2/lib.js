@@ -34,6 +34,10 @@ function table_row(data, tag) {
     });
 }
 
+var $ = function(s) {
+    return document.querySelector(s);
+};
+
 function getAttributes(ele) {
     var ret = [];
     for (var i in ele) {
