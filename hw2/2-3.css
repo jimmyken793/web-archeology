@@ -1,0 +1,31 @@
+#main_cont{
+	width: 300px;
+	border: 1px solid;
+	box-shadow: 1px 5px 5px #666;
+	position:absolute;
+	left:50%;
+	top:50%;
+	
+	margin-top:-150px;
+	margin-left:-150px;
+	text-align: center;
+}
+#trigger{
+	display: inline-block;
+	height:30px;
+	margin:5px;
+}
+td{
+	width:50%;
+	vertical-align: middle;
+	border: 1px;
+	border-style: solid;
+}
+tr{
+	height:30px;
+	border: 1px;
+	border-style: solid;
+}
+table{
+	width:100%;
+}

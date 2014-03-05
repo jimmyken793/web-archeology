@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<title>HW2-2 五秒時間感的測驗</title>
+<link rel="stylesheet" href="http://meyerweb.com/eric/tools/css/reset/reset.css">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="2-3.css">
+</head>
+
+<body>
+<div id="main_cont">
+<table>
+	<tr>
+		<td id="msg" colspan="2">&nbsp;</td>
+	</tr>
+	<tr>
+		<td><label for="tries">嘗試次數</label></td>
+		<td><p id="tries" />&nbsp;</td>
+	</tr>
+	<tr>
+		<td><label for="time">按下時間</label></td>
+		<td><p id="time" />&nbsp;</td>
+	</tr>
+	<tr>
+		<td><label for="delta">相差時間</label></td>
+		<td><p id="delta" />&nbsp;</td>
+	</tr>
+	<tr>
+		<td><label for="best">最佳紀錄</label></td>
+		<td><p id="best" />&nbsp;</td>
+	</tr>
+</table>
+<div id="progressbar"></div>
+<a id="trigger" />開始玩遊戲</a>
+</div>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script>
+var start_time;
+var tries = 0;
+var best = 0;
+var time_interval = 1;
+var interval;
+$(function(){
+	$("#trigger").button().click(function(){
+		console.log();
+		if($(this).data("start")){
+			$(this).text("開始玩遊戲");
+			var s = $(this).data("start");
+			$(this).data("start", null);
+			var d = (new Date()-s)%(time_interval*2000);
+			if(d>time_interval*1000){
+				d = time_interval*2000-d
+			}
+			update_pressed(d/1000);
+		}else{
+			$(this).data("start", new Date());
+			$(this).text("按我...");
+			interval = setInterval("timed_update()", 23);
+		}
+	});
+	$("#progressbar").progressbar({
+		value: 0,
+		max: time_interval*1000
+	});
+	update_value();
+});
+function timed_update(){
+	var v = $("#trigger").data("start");
+	if(v){
+		var d = (new Date()-v)%(time_interval*2000);
+		if(d>time_interval*1000){
+			d = time_interval*2000-d
+		}
+		update_display_second(d/1000);
+	}else{
+		clearInterval(interval);
+	}
+}
+function update_display_second(seconds){
+	$("#progressbar").progressbar("value", seconds*1000);
+	var delta = Math.abs(seconds - Math.round(seconds));
+	var best_delta = Math.abs(best - time_interval);
+	$("#time").text((seconds-Math.floor(seconds)).toFixed(3));
+	$("#delta").text(delta.toFixed(3));
+}
+function update_pressed(seconds){
+	update_display_second(seconds);
+	console.log(seconds);
+	var delta = Math.abs(seconds - Math.round(seconds));
+	var best_delta = Math.abs(best - time_interval);
+	if(delta < best_delta){
+		best = delta;
+		$("#msg").text("nice one").css("background-color:green");
+	}else{
+		$("#msg").text("ahaah uccu").css("background-color:red");
+	}
+	tries = tries + 1;
+	update_value();
+}
+function update_value(){
+	$("#tries").text(tries);
+	$("#best").text(best.toFixed(3));
+}
+</script>
+</body>
+</html>
