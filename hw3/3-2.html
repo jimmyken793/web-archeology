@@ -1,0 +1,71 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<link rel="stylesheet" href="2-1.css">
+<title>HW3-2 照相簿之一</title>
+</head>
+
+<body>
+<h1>照相簿之一</h1>
+<hr />
+<div><input id="spinner" name="value" value="5"></div>
+<img src="http://placehold.it/200x200" id="image_frame" alt="">
+<p id="remain_time">5</p>
+<p id="url"></p>
+<a id="btnPrev" href="#">Previous</a> - 
+<a id="btnPlayPause" href="#">Play</a> - 
+<a id="btnNext" href="#">Next</a>
+<script src="lib.js"></script>
+<script>
+var image_urls = range(1, 5).map(function(i){
+	return "http://mirlab.org/jang/books/javascript/image/19980405/000"+i+".jpg";
+});
+var pos = 0;
+function showPicture(url){
+	$("#image_frame").src = url;
+	$("#url").textContent = url;
+}
+function nextPicture(offset){
+	pos = (pos + offset + image_urls.length)%image_urls.length ;
+	showPicture(image_urls[pos]);
+}
+var cnt = 0;
+function counter(){
+	var n = $("#spinner").value;
+	if(n<=0){
+		n = 1;
+	}
+	console.log(n);	
+	cnt = (cnt + 1)%n;
+	$("#remain_time").textContent = n-cnt;
+	if(cnt == 0){
+		nextPicture();
+	}
+}
+var play_handler = null;
+
+function play_pause(){
+	if(play_handler === null){
+		play_handler = setInterval(counter, 1000);
+	}else{
+		clearTimeout(play_handler);
+		play_handler = null;
+	}
+}
+
+window.onload = function(){
+	showPicture(image_urls[pos]);
+	$("#image_frame").onclick = function(e){
+		nextPicture(1);
+	}
+	$("#btnPrev").onclick = function(){
+		nextPicture(-1);
+	};
+	$("#btnNext").onclick = function(){
+		nextPicture(1);
+	};
+	$("#btnPlayPause").onclick = play_pause;
+}
+</script>
+</body>
+</html>

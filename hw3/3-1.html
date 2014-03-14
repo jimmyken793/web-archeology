@@ -1,0 +1,62 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<title>HW3-1 計算時間比較：以「遞迴方式」和「迴圈方式」來產生組合個數</title>
+</head>
+
+<body>
+<h1>計算時間比較：以「遞迴方式」和「迴圈方式」來產生組合個數</h1>
+<hr />
+<div id="output">
+</div>
+<script src="lib.js"></script>
+<script>
+function fn_c(m,n){
+	if(m===1){
+		return 1;
+	}
+	return fn_c(m-1,n-1) + fn_c(m-1,n);
+}
+function fn_c_l(m,n){
+	var ret = 1;
+	for(var i=1;i<=m;i++){
+		ret *= i;
+	}
+	for(var i=1;i<=m-n;i++){
+		ret /= i;
+	}
+	for(var i=1;i<=n;i++){
+		ret /= i;
+	}
+	return ret;
+}
+function timer(func){
+	var start_time = new Date();
+	for(var i in range(0,1000)){
+		func();
+	}
+	return new Date()-start_time;
+}
+window.onload = function(){
+	range(10,11).forEach(function(m){
+		console.log(m);
+		var time_1 = timer(function(){
+			fn_c(m,Math.floor(m/2));
+		});
+		var time_2 = timer(function(){
+			fn_c_l(m,Math.floor(m/2));
+		});
+		$("#output").appendChild(ele("p",function(e){
+			e.textContent = "m = "+m;
+		}));
+		$("#output").appendChild(ele("p",function(e){
+			e.textContent = "recursive: "+time_1+"ms";
+		}));
+		$("#output").appendChild(ele("p",function(e){
+			e.textContent = "loop: "+time_2+"ms";
+		}));
+	});
+}
+</script>
+</body>
+</html>
