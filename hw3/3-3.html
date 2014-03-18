@@ -1,0 +1,92 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<link rel="stylesheet" href="http://meyerweb.com/eric/tools/css/reset/reset.css">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<title>HW3-3 照相簿之一</title>
+</head>
+
+<body>
+<h1>照相簿之一</h1>
+<hr />
+<div><input id="spinner" name="value" value="5"></div>
+<img src="http://placehold.it/200x200" id="image_frame" alt="">
+<div id="remain_time"></div>
+<p id="url"></p>
+<a class="btn" id="btnPrev" href="#">Previous</a> - 
+<a class="btn" id="btnPlayPause" href="#">Play</a> - 
+<a class="btn" id="btnNext" href="#">Next</a> - 
+<a class="btn" id="btnRand" href="#">Rand</a>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script>
+function range(start, count) {
+    return Array.apply(0, Array(count)).map(function(e, i) {
+        return i + start;
+    });
+}
+
+var image_urls = range(1, 5).map(function(i){
+	return "http://mirlab.org/jang/books/javascript/image/19980405/000"+i+".jpg";
+});
+var pos = 0;
+function showPicture(url){
+	$("#image_frame").attr("src", url);
+	$("#url").text(url);
+}
+function nextPicture(offset){
+	pos = (pos + offset + image_urls.length) % image_urls.length ;
+	showPicture(image_urls[pos]);
+}
+var cnt = 0;
+function counter(){
+	var n = $("#spinner").val();
+	if(n<=0){
+		n = 1;
+	}
+	console.log(n);	
+	cnt = (cnt + 1)%n;
+	$("#remain_time").progressbar("option", "max", n);
+	$("#remain_time").progressbar("value", n-cnt);
+	if(cnt == 0){
+		nextPicture(1);
+	}
+}
+var play_handler = null;
+
+function play_pause(){
+	if(play_handler === null){
+		play_handler = setInterval(counter, 1000);
+	}else{
+		clearTimeout(play_handler);
+		play_handler = null;
+	}
+}
+
+$(function(){
+	var spinner = $("#spinner").spinner();
+	console.log(spinner);
+	$(".btn").button();
+	showPicture(image_urls[pos]);
+	$("#image_frame").click(function(e){
+		nextPicture(1);
+	});
+	$("#btnPrev").click(function(){
+		nextPicture(-1);
+	});
+	$("#btnNext").click(function(){
+		nextPicture(1);
+	});
+	$("#btnRand").click(function(){
+		pos = Math.floor(Math.random() * (image_urls.length-1 + 1));
+		console.log(pos);
+		showPicture(image_urls[pos]);
+	});
+	$("#btnPlayPause").click(play_pause);
+	$("#remain_time").progressbar({
+		value: 0
+	});
+});
+</script>
+</body>
+</html>

@@ -8,7 +8,11 @@
 <body>
 <h1>照相簿之一</h1>
 <hr />
-<div><input id="spinner" name="value" value="5"></div>
+<div>1<input id="spinner0" name="value" value="5"></div>
+<div>2<input id="spinner1" name="value" value="5"></div>
+<div>2<input id="spinner2" name="value" value="5"></div>
+<div>3<input id="spinner3" name="value" value="5"></div>
+<div>4<input id="spinner4" name="value" value="5"></div>
 <img src="http://placehold.it/200x200" id="image_frame" alt="">
 <p id="remain_time">5</p>
 <p id="url"></p>
@@ -31,7 +35,7 @@ function nextPicture(offset){
 }
 var cnt = 0;
 function counter(){
-	var n = $("#spinner").value;
+	var n = $("#spinner"+pos).value;
 	if(n<=0){
 		n = 1;
 	}
@@ -39,7 +43,7 @@ function counter(){
 	cnt = (cnt + 1)%n;
 	$("#remain_time").textContent = n-cnt;
 	if(cnt == 0){
-		nextPicture();
+		nextPicture(1);
 	}
 }
 var play_handler = null;
