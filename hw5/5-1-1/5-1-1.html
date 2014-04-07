@@ -1,0 +1,29 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<title>HW5-1 不同目錄下的Cookie共用</title>
+</head>
+
+<body>
+<h1>不同目錄下的Cookie共用</h1>
+<hr />
+<input type="text" id="cookie_val">
+<input type="button" id="set_cookie_btn" value="Set Cookie">
+<input type="button" id="refresh_btn" value="Refresh Value">
+
+<script src="../lib.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>
+
+window.onload = function(){
+	$("#cookie_val").val(cookie.get('jomican_cookie'));
+	$("#refresh_btn").click(function(){
+		$("#cookie_val").val(cookie.get('jomican_cookie'));
+	})
+	$("#set_cookie_btn").click(function(){
+		cookie.set('jomican_cookie', $("#cookie_val").val(), {path:'/'});
+	})
+}
+</script>
+</body>
+</html>

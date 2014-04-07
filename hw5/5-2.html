@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<title>HW5-2 讀寫Cookie以確認其長度限制</title>
+</head>
+
+<body>
+<h1>讀寫Cookie以確認其長度限制</h1>
+<div id="output"></div>
+<script src="lib.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>
+$(function(){
+	var data = "";
+	var read_data = "";
+	while(read_data.length == data.length){
+		data = data + '.'
+		cookie.set('jomican_test', data);
+		read_data = cookie.get('jomican_test');
+	}
+	$("#output").append($("<p/>").text("Maximum cookie length: "+read_data.length+" bytes"));
+	cookie.del('jomican_test');
+	var read_cookie = "";
+	var last_count = cookie.count()-1;
+	var count = 1;
+	while(last_count != cookie.count()){
+		last_count = cookie.count();
+		while(cookie.get("cookie"+count)!=undefined){
+			count=count+1;
+		}
+		cookie.set("cookie"+count, "");
+		count=count+1;
+	}
+	$("#output").append($("<p/>").text("Maximum cookie count: "+(cookie.count())));
+	
+	document.cookie.split('; ').forEach(function (val){
+		var key = val.substr(0,val.indexOf('='));
+		cookie.del(key);
+	});
+})
+</script>
+</body>
+</html>
