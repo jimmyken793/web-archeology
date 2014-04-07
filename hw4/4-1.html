@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<title>HW4-1 突變的蟑螂</title>
+</head>
+
+<body>
+<h1>突變的蟑螂</h1>
+<hr />
+<div id="output">
+</div>
+<img src="tux.jpg" alt="" id="tux" style="position:absolute;">
+<script src="lib.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>
+var size = parseInt(location.hash.slice(1));
+if(isNaN(size)){
+	size = 10;
+}
+function rand(min,max) {
+	return Math.floor(Math.random()*(max-min+1)+min);
+}
+function move(){
+	var x = rand(1,500);
+	var y = rand(3,300);
+	var pos_x = parseInt($("#tux").css("left"));
+	var pos_y = parseInt($("#tux").css("top"));
+	$("#tux").animate({
+		left:x+"px",
+		top:y+"px"
+	}, Math.sqrt((x-pos_x)*(x-pos_x)+(y-pos_y)*(y-pos_y))/1000*1000, "linear", move);
+}
+window.onload = function(){
+	$("#tux").css("width", size+"px").css("height", size+"px")
+	move();
+}
+window.onunload=function(){
+	window.open(document.location.href.replace(/#[^?]*/, '')+"#"+(Math.floor(size*1.5)));
+};
+</script>
+</body>
+</html>

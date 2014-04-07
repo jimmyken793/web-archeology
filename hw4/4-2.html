@@ -1,0 +1,599 @@
+<html>
+<head>
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<link rel="stylesheet" href="http://meyerweb.com/eric/tools/css/reset/reset.css">
+<title>HW4-2 貪食蛇</title>
+</head>
+
+<body>
+<h1>貪食蛇</h1>
+<hr />
+<!-- table>tr[class="y_$"]*10>td[class="x_$ cell"]*10 -->
+<table>
+	<tr class="y_1">
+		<td class="x_1 cell"></td>
+		<td class="x_2 cell"></td>
+		<td class="x_3 cell"></td>
+		<td class="x_4 cell"></td>
+		<td class="x_5 cell"></td>
+		<td class="x_6 cell"></td>
+		<td class="x_7 cell"></td>
+		<td class="x_8 cell"></td>
+		<td class="x_9 cell"></td>
+		<td class="x_10 cell"></td>
+		<td class="x_11 cell"></td>
+		<td class="x_12 cell"></td>
+		<td class="x_13 cell"></td>
+		<td class="x_14 cell"></td>
+		<td class="x_15 cell"></td>
+		<td class="x_16 cell"></td>
+		<td class="x_17 cell"></td>
+		<td class="x_18 cell"></td>
+		<td class="x_19 cell"></td>
+		<td class="x_20 cell"></td>
+	</tr>
+	<tr class="y_2">
+		<td class="x_1 cell"></td>
+		<td class="x_2 cell"></td>
+		<td class="x_3 cell"></td>
+		<td class="x_4 cell"></td>
+		<td class="x_5 cell"></td>
+		<td class="x_6 cell"></td>
+		<td class="x_7 cell"></td>
+		<td class="x_8 cell"></td>
+		<td class="x_9 cell"></td>
+		<td class="x_10 cell"></td>
+		<td class="x_11 cell"></td>
+		<td class="x_12 cell"></td>
+		<td class="x_13 cell"></td>
+		<td class="x_14 cell"></td>
+		<td class="x_15 cell"></td>
+		<td class="x_16 cell"></td>
+		<td class="x_17 cell"></td>
+		<td class="x_18 cell"></td>
+		<td class="x_19 cell"></td>
+		<td class="x_20 cell"></td>
+	</tr>
+	<tr class="y_3">
+		<td class="x_1 cell"></td>
+		<td class="x_2 cell"></td>
+		<td class="x_3 cell"></td>
+		<td class="x_4 cell"></td>
+		<td class="x_5 cell"></td>
+		<td class="x_6 cell"></td>
+		<td class="x_7 cell"></td>
+		<td class="x_8 cell"></td>
+		<td class="x_9 cell"></td>
+		<td class="x_10 cell"></td>
+		<td class="x_11 cell"></td>
+		<td class="x_12 cell"></td>
+		<td class="x_13 cell"></td>
+		<td class="x_14 cell"></td>
+		<td class="x_15 cell"></td>
+		<td class="x_16 cell"></td>
+		<td class="x_17 cell"></td>
+		<td class="x_18 cell"></td>
+		<td class="x_19 cell"></td>
+		<td class="x_20 cell"></td>
+	</tr>
+	<tr class="y_4">
+		<td class="x_1 cell"></td>
+		<td class="x_2 cell"></td>
+		<td class="x_3 cell"></td>
+		<td class="x_4 cell"></td>
+		<td class="x_5 cell"></td>
+		<td class="x_6 cell"></td>
+		<td class="x_7 cell"></td>
+		<td class="x_8 cell"></td>
+		<td class="x_9 cell"></td>
+		<td class="x_10 cell"></td>
+		<td class="x_11 cell"></td>
+		<td class="x_12 cell"></td>
+		<td class="x_13 cell"></td>
+		<td class="x_14 cell"></td>
+		<td class="x_15 cell"></td>
+		<td class="x_16 cell"></td>
+		<td class="x_17 cell"></td>
+		<td class="x_18 cell"></td>
+		<td class="x_19 cell"></td>
+		<td class="x_20 cell"></td>
+	</tr>
+	<tr class="y_5">
+		<td class="x_1 cell"></td>
+		<td class="x_2 cell"></td>
+		<td class="x_3 cell"></td>
+		<td class="x_4 cell"></td>
+		<td class="x_5 cell"></td>
+		<td class="x_6 cell"></td>
+		<td class="x_7 cell"></td>
+		<td class="x_8 cell"></td>
+		<td class="x_9 cell"></td>
+		<td class="x_10 cell"></td>
+		<td class="x_11 cell"></td>
+		<td class="x_12 cell"></td>
+		<td class="x_13 cell"></td>
+		<td class="x_14 cell"></td>
+		<td class="x_15 cell"></td>
+		<td class="x_16 cell"></td>
+		<td class="x_17 cell"></td>
+		<td class="x_18 cell"></td>
+		<td class="x_19 cell"></td>
+		<td class="x_20 cell"></td>
+	</tr>
+	<tr class="y_6">
+		<td class="x_1 cell"></td>
+		<td class="x_2 cell"></td>
+		<td class="x_3 cell"></td>
+		<td class="x_4 cell"></td>
+		<td class="x_5 cell"></td>
+		<td class="x_6 cell"></td>
+		<td class="x_7 cell"></td>
+		<td class="x_8 cell"></td>
+		<td class="x_9 cell"></td>
+		<td class="x_10 cell"></td>
+		<td class="x_11 cell"></td>
+		<td class="x_12 cell"></td>
+		<td class="x_13 cell"></td>
+		<td class="x_14 cell"></td>
+		<td class="x_15 cell"></td>
+		<td class="x_16 cell"></td>
+		<td class="x_17 cell"></td>
+		<td class="x_18 cell"></td>
+		<td class="x_19 cell"></td>
+		<td class="x_20 cell"></td>
+	</tr>
+	<tr class="y_7">
+		<td class="x_1 cell"></td>
+		<td class="x_2 cell"></td>
+		<td class="x_3 cell"></td>
+		<td class="x_4 cell"></td>
+		<td class="x_5 cell"></td>
+		<td class="x_6 cell"></td>
+		<td class="x_7 cell"></td>
+		<td class="x_8 cell"></td>
+		<td class="x_9 cell"></td>
+		<td class="x_10 cell"></td>
+		<td class="x_11 cell"></td>
+		<td class="x_12 cell"></td>
+		<td class="x_13 cell"></td>
+		<td class="x_14 cell"></td>
+		<td class="x_15 cell"></td>
+		<td class="x_16 cell"></td>
+		<td class="x_17 cell"></td>
+		<td class="x_18 cell"></td>
+		<td class="x_19 cell"></td>
+		<td class="x_20 cell"></td>
+	</tr>
+	<tr class="y_8">
+		<td class="x_1 cell"></td>
+		<td class="x_2 cell"></td>
+		<td class="x_3 cell"></td>
+		<td class="x_4 cell"></td>
+		<td class="x_5 cell"></td>
+		<td class="x_6 cell"></td>
+		<td class="x_7 cell"></td>
+		<td class="x_8 cell"></td>
+		<td class="x_9 cell"></td>
+		<td class="x_10 cell"></td>
+		<td class="x_11 cell"></td>
+		<td class="x_12 cell"></td>
+		<td class="x_13 cell"></td>
+		<td class="x_14 cell"></td>
+		<td class="x_15 cell"></td>
+		<td class="x_16 cell"></td>
+		<td class="x_17 cell"></td>
+		<td class="x_18 cell"></td>
+		<td class="x_19 cell"></td>
+		<td class="x_20 cell"></td>
+	</tr>
+	<tr class="y_9">
+		<td class="x_1 cell"></td>
+		<td class="x_2 cell"></td>
+		<td class="x_3 cell"></td>
+		<td class="x_4 cell"></td>
+		<td class="x_5 cell"></td>
+		<td class="x_6 cell"></td>
+		<td class="x_7 cell"></td>
+		<td class="x_8 cell"></td>
+		<td class="x_9 cell"></td>
+		<td class="x_10 cell"></td>
+		<td class="x_11 cell"></td>
+		<td class="x_12 cell"></td>
+		<td class="x_13 cell"></td>
+		<td class="x_14 cell"></td>
+		<td class="x_15 cell"></td>
+		<td class="x_16 cell"></td>
+		<td class="x_17 cell"></td>
+		<td class="x_18 cell"></td>
+		<td class="x_19 cell"></td>
+		<td class="x_20 cell"></td>
+	</tr>
+	<tr class="y_10">
+		<td class="x_1 cell"></td>
+		<td class="x_2 cell"></td>
+		<td class="x_3 cell"></td>
+		<td class="x_4 cell"></td>
+		<td class="x_5 cell"></td>
+		<td class="x_6 cell"></td>
+		<td class="x_7 cell"></td>
+		<td class="x_8 cell"></td>
+		<td class="x_9 cell"></td>
+		<td class="x_10 cell"></td>
+		<td class="x_11 cell"></td>
+		<td class="x_12 cell"></td>
+		<td class="x_13 cell"></td>
+		<td class="x_14 cell"></td>
+		<td class="x_15 cell"></td>
+		<td class="x_16 cell"></td>
+		<td class="x_17 cell"></td>
+		<td class="x_18 cell"></td>
+		<td class="x_19 cell"></td>
+		<td class="x_20 cell"></td>
+	</tr>
+	<tr class="y_11">
+		<td class="x_1 cell"></td>
+		<td class="x_2 cell"></td>
+		<td class="x_3 cell"></td>
+		<td class="x_4 cell"></td>
+		<td class="x_5 cell"></td>
+		<td class="x_6 cell"></td>
+		<td class="x_7 cell"></td>
+		<td class="x_8 cell"></td>
+		<td class="x_9 cell"></td>
+		<td class="x_10 cell"></td>
+		<td class="x_11 cell"></td>
+		<td class="x_12 cell"></td>
+		<td class="x_13 cell"></td>
+		<td class="x_14 cell"></td>
+		<td class="x_15 cell"></td>
+		<td class="x_16 cell"></td>
+		<td class="x_17 cell"></td>
+		<td class="x_18 cell"></td>
+		<td class="x_19 cell"></td>
+		<td class="x_20 cell"></td>
+	</tr>
+	<tr class="y_12">
+		<td class="x_1 cell"></td>
+		<td class="x_2 cell"></td>
+		<td class="x_3 cell"></td>
+		<td class="x_4 cell"></td>
+		<td class="x_5 cell"></td>
+		<td class="x_6 cell"></td>
+		<td class="x_7 cell"></td>
+		<td class="x_8 cell"></td>
+		<td class="x_9 cell"></td>
+		<td class="x_10 cell"></td>
+		<td class="x_11 cell"></td>
+		<td class="x_12 cell"></td>
+		<td class="x_13 cell"></td>
+		<td class="x_14 cell"></td>
+		<td class="x_15 cell"></td>
+		<td class="x_16 cell"></td>
+		<td class="x_17 cell"></td>
+		<td class="x_18 cell"></td>
+		<td class="x_19 cell"></td>
+		<td class="x_20 cell"></td>
+	</tr>
+	<tr class="y_13">
+		<td class="x_1 cell"></td>
+		<td class="x_2 cell"></td>
+		<td class="x_3 cell"></td>
+		<td class="x_4 cell"></td>
+		<td class="x_5 cell"></td>
+		<td class="x_6 cell"></td>
+		<td class="x_7 cell"></td>
+		<td class="x_8 cell"></td>
+		<td class="x_9 cell"></td>
+		<td class="x_10 cell"></td>
+		<td class="x_11 cell"></td>
+		<td class="x_12 cell"></td>
+		<td class="x_13 cell"></td>
+		<td class="x_14 cell"></td>
+		<td class="x_15 cell"></td>
+		<td class="x_16 cell"></td>
+		<td class="x_17 cell"></td>
+		<td class="x_18 cell"></td>
+		<td class="x_19 cell"></td>
+		<td class="x_20 cell"></td>
+	</tr>
+	<tr class="y_14">
+		<td class="x_1 cell"></td>
+		<td class="x_2 cell"></td>
+		<td class="x_3 cell"></td>
+		<td class="x_4 cell"></td>
+		<td class="x_5 cell"></td>
+		<td class="x_6 cell"></td>
+		<td class="x_7 cell"></td>
+		<td class="x_8 cell"></td>
+		<td class="x_9 cell"></td>
+		<td class="x_10 cell"></td>
+		<td class="x_11 cell"></td>
+		<td class="x_12 cell"></td>
+		<td class="x_13 cell"></td>
+		<td class="x_14 cell"></td>
+		<td class="x_15 cell"></td>
+		<td class="x_16 cell"></td>
+		<td class="x_17 cell"></td>
+		<td class="x_18 cell"></td>
+		<td class="x_19 cell"></td>
+		<td class="x_20 cell"></td>
+	</tr>
+	<tr class="y_15">
+		<td class="x_1 cell"></td>
+		<td class="x_2 cell"></td>
+		<td class="x_3 cell"></td>
+		<td class="x_4 cell"></td>
+		<td class="x_5 cell"></td>
+		<td class="x_6 cell"></td>
+		<td class="x_7 cell"></td>
+		<td class="x_8 cell"></td>
+		<td class="x_9 cell"></td>
+		<td class="x_10 cell"></td>
+		<td class="x_11 cell"></td>
+		<td class="x_12 cell"></td>
+		<td class="x_13 cell"></td>
+		<td class="x_14 cell"></td>
+		<td class="x_15 cell"></td>
+		<td class="x_16 cell"></td>
+		<td class="x_17 cell"></td>
+		<td class="x_18 cell"></td>
+		<td class="x_19 cell"></td>
+		<td class="x_20 cell"></td>
+	</tr>
+	<tr class="y_16">
+		<td class="x_1 cell"></td>
+		<td class="x_2 cell"></td>
+		<td class="x_3 cell"></td>
+		<td class="x_4 cell"></td>
+		<td class="x_5 cell"></td>
+		<td class="x_6 cell"></td>
+		<td class="x_7 cell"></td>
+		<td class="x_8 cell"></td>
+		<td class="x_9 cell"></td>
+		<td class="x_10 cell"></td>
+		<td class="x_11 cell"></td>
+		<td class="x_12 cell"></td>
+		<td class="x_13 cell"></td>
+		<td class="x_14 cell"></td>
+		<td class="x_15 cell"></td>
+		<td class="x_16 cell"></td>
+		<td class="x_17 cell"></td>
+		<td class="x_18 cell"></td>
+		<td class="x_19 cell"></td>
+		<td class="x_20 cell"></td>
+	</tr>
+	<tr class="y_17">
+		<td class="x_1 cell"></td>
+		<td class="x_2 cell"></td>
+		<td class="x_3 cell"></td>
+		<td class="x_4 cell"></td>
+		<td class="x_5 cell"></td>
+		<td class="x_6 cell"></td>
+		<td class="x_7 cell"></td>
+		<td class="x_8 cell"></td>
+		<td class="x_9 cell"></td>
+		<td class="x_10 cell"></td>
+		<td class="x_11 cell"></td>
+		<td class="x_12 cell"></td>
+		<td class="x_13 cell"></td>
+		<td class="x_14 cell"></td>
+		<td class="x_15 cell"></td>
+		<td class="x_16 cell"></td>
+		<td class="x_17 cell"></td>
+		<td class="x_18 cell"></td>
+		<td class="x_19 cell"></td>
+		<td class="x_20 cell"></td>
+	</tr>
+	<tr class="y_18">
+		<td class="x_1 cell"></td>
+		<td class="x_2 cell"></td>
+		<td class="x_3 cell"></td>
+		<td class="x_4 cell"></td>
+		<td class="x_5 cell"></td>
+		<td class="x_6 cell"></td>
+		<td class="x_7 cell"></td>
+		<td class="x_8 cell"></td>
+		<td class="x_9 cell"></td>
+		<td class="x_10 cell"></td>
+		<td class="x_11 cell"></td>
+		<td class="x_12 cell"></td>
+		<td class="x_13 cell"></td>
+		<td class="x_14 cell"></td>
+		<td class="x_15 cell"></td>
+		<td class="x_16 cell"></td>
+		<td class="x_17 cell"></td>
+		<td class="x_18 cell"></td>
+		<td class="x_19 cell"></td>
+		<td class="x_20 cell"></td>
+	</tr>
+	<tr class="y_19">
+		<td class="x_1 cell"></td>
+		<td class="x_2 cell"></td>
+		<td class="x_3 cell"></td>
+		<td class="x_4 cell"></td>
+		<td class="x_5 cell"></td>
+		<td class="x_6 cell"></td>
+		<td class="x_7 cell"></td>
+		<td class="x_8 cell"></td>
+		<td class="x_9 cell"></td>
+		<td class="x_10 cell"></td>
+		<td class="x_11 cell"></td>
+		<td class="x_12 cell"></td>
+		<td class="x_13 cell"></td>
+		<td class="x_14 cell"></td>
+		<td class="x_15 cell"></td>
+		<td class="x_16 cell"></td>
+		<td class="x_17 cell"></td>
+		<td class="x_18 cell"></td>
+		<td class="x_19 cell"></td>
+		<td class="x_20 cell"></td>
+	</tr>
+	<tr class="y_20">
+		<td class="x_1 cell"></td>
+		<td class="x_2 cell"></td>
+		<td class="x_3 cell"></td>
+		<td class="x_4 cell"></td>
+		<td class="x_5 cell"></td>
+		<td class="x_6 cell"></td>
+		<td class="x_7 cell"></td>
+		<td class="x_8 cell"></td>
+		<td class="x_9 cell"></td>
+		<td class="x_10 cell"></td>
+		<td class="x_11 cell"></td>
+		<td class="x_12 cell"></td>
+		<td class="x_13 cell"></td>
+		<td class="x_14 cell"></td>
+		<td class="x_15 cell"></td>
+		<td class="x_16 cell"></td>
+		<td class="x_17 cell"></td>
+		<td class="x_18 cell"></td>
+		<td class="x_19 cell"></td>
+		<td class="x_20 cell"></td>
+	</tr>
+</table>
+<style>
+	table{
+		border-width: 0px;
+	}
+	.cell{
+		width:20px;
+		height:20px;
+		background-color: black;
+		margin:-1px;
+	}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>
+var table=null;
+
+var direction;
+var old_dir;
+var body;
+var fruit_pos;
+var stopped;
+var dir_offset=[[0,-1],[1,0],[0,1],[-1,0]];
+var width=20;
+var height=20;
+var timer;
+function rand(min,max) {
+	return Math.floor(Math.random()*(max-min+1)+min);
+}
+function new_fruit(){
+	do{
+		fruit_pos = [rand(0,width-1),rand(0,width-1)];
+	}while(inBody(fruit_pos));
+}
+function init(){
+	direction = 1;
+	old_dir = direction;
+	body = [[3,10],[2,10],[1,10]];
+	stopped = false;
+	new_fruit();
+}
+function start(){
+	timer = setInterval(update, 150);
+}
+function stop(){
+	stopped = true;
+	clearInterval(timer);
+}
+function draw(x,y,color){
+	if(table===null){
+		table = [];
+		for(var y=0;y<height;y++){
+			var a=[];
+			for(var x=0;x<width;x++){
+				a.push($(".y_"+(y+1)+">.x_"+(x+1)));
+			}
+			table.push(a);
+		}
+	}
+	return table[y][x].css("background-color", color);
+}
+function clean(){
+	$(".cell").css("background-color", "black")
+}
+function inBody(p){
+	var collision = body.map(function(pos){
+		if(pos.toString()===p.toString()){
+			return 1;
+		}
+		return 0;
+	}).reduce(function(pv, cv) { return pv + cv; }, 0);
+	if(collision>0){
+		return true;
+	}
+	return false;
+}
+
+// function
+function update(){
+	clean();
+	var head = body[0];
+	var new_head = [(head[0]+dir_offset[direction][0]+width)%width , (head[1]+dir_offset[direction][1]+height)%height];
+	if(inBody(new_head)){
+		stop();
+		return;
+	}
+	body.unshift(new_head);
+	if(inBody(fruit_pos)){
+		new_fruit();
+	}else{
+		body.pop();
+	}
+	body.forEach(function(pos){
+		draw(pos[0], pos[1], "red");
+	});
+	draw(fruit_pos[0],fruit_pos[1],"white");
+	old_dir = direction;
+}
+$(function(){
+	$(document).keydown(function( event ) {
+		if(stopped){
+			switch(event.key){
+				case "Up":
+				case "Right":
+				case "Down":
+				case "Left":
+					init();
+					start();
+				break;
+			}
+		}else{
+			switch(event.key){
+				case "Up":
+					if(old_dir!=2){
+						direction=0;
+						event.preventDefault();
+					}
+				break;
+				case "Right":
+					if(old_dir!=3){
+						direction=1;
+						event.preventDefault();
+					}
+				break;
+				case "Down":
+					if(old_dir!=0){
+						direction=2;
+						event.preventDefault();
+					}
+				break;
+				case "Left":
+					if(old_dir!=1){
+						direction=3;
+						event.preventDefault();
+					}
+				break;
+				init();
+			}
+		}
+	});
+	init();
+	// update();
+	stopped = true;
+	
+})
+</script>
+</body>
+</html>
