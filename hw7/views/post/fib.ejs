@@ -1,0 +1,27 @@
+
+<script>
+function fib(i) {
+    if (i <= 2)
+        return 1
+    else
+        return fib(i - 1) + fib(i - 2);
+}
+client_result = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20].map(function(c) {
+    var start_date = new Date();
+    for (var i = 0; i < 10000; i++) {
+        fib(c);
+    }
+    var end_date = new Date();
+    return (end_date - start_date);
+});
+server_result = <%=JSON.stringify(time)%>;
+$(function(){
+	var e = $("<table/>");
+	e.append($("<tr/>").append($("<td/>").text("n")).append($("<td/>").text("Server")).append($("<td/>").text("Client")));
+	[10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20].forEach(function(i){
+		e.append($("<tr/>").append($("<td/>").text(i+"")).append($("<td/>").text(server_result[i-10]+"")).append($("<td/>").text(client_result[i-10]+"")));
+	});
+	// .appendChild($("<p />").text(""))
+	$("body").append(e);
+})
+</script>
