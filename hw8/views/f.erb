@@ -1,0 +1,13 @@
+<ul>
+<% @songs.each{|song|%>
+<li>
+	<p><%=song.name%></p>
+<ul>
+<% song.midis.each{|midi|%>
+<li><%=midi.path%></li>
+<%}%>
+</ul>
+</li>
+<%}%>
+</ul>
+<a href="/">Back</a>

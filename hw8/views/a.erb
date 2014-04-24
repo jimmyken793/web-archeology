@@ -1,0 +1,7 @@
+<h1>歌曲共包含哪幾種不同語言</h1>
+<ul>
+<% @songs.each{|song|%>
+<li><%=song.language%></li>
+<%}%>
+</ul>
+<a href="/">Back</a>

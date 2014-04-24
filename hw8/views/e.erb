@@ -1,0 +1,15 @@
+<h1>唱過台語歌曲的女藝人及所唱的台語歌</h1>
+
+<ul>
+<% @singers.each{|singer|%>
+<li>
+	<p><%=singer.name%></p>
+<ul>
+<% singer.songs.each{|song|%>
+<li><%=song.name%></li>
+<%}%>
+</ul>
+</li>
+<%}%>
+</ul>
+<a href="/">Back</a>
