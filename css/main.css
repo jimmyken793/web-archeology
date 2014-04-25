@@ -2,6 +2,49 @@ body {
   padding-top: 50px;
 }
 .landing-main{
-	padding: 40px 15px;
+	padding: 150px 15px;
+	height:500px;
+	vertical-align: middle;
 	text-align: center;
+}
+.landing{
+	height:500px;
+	text-align: center;
+	background-image: url(../pic/landing-bg.jpg);
+	background-repeat: no-repeat; 
+	background-size: 100%;
+	color:white;
+}
+.landing-wrapper{
+	height:100%;
+	width:100%;
+}
+
+.member{
+	background-image: url(../pic/member-bg.png);
+	background-repeat: no-repeat; 
+	background-size: 100%;
+	padding-top: 30px;
+	padding-bottom: 100px;
+}
+.summary{
+	background-image: url(../pic/summary-bg.png);
+	background-repeat: no-repeat; 
+	background-size: 100%;
+	color:white;
+}
+.container>h2{
+	padding-top: 30px;
+	padding-bottom: 30px;
+	font-weight: bold;
+}
+
+.container{
+	text-align: center;
+	width:100%;
+}
+.container>p{
+	margin-left:200px;
+	margin-right: 200px; 
+	line-height: 2em;
 }
