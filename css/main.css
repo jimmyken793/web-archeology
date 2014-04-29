@@ -2,18 +2,7 @@
 body {
 }
 .masthead.segment>.information{
-	padding-top: 150px;
-	padding-bottom: 30px;
 	vertical-align: middle;
-}
-.masthead.segment {
-	text-align: center;
-	background-image: url(../pic/landing-bg.jpg);
-	background-repeat: no-repeat; 
-	-webkit-background-size: cover;
-	background-size: cover;
-	margin: 0em;
-	height:500px;
 }
 .landing-wrapper{
 	height:100%;
@@ -23,35 +12,71 @@ body {
 	margin-top: 0px;
 	margin-bottom: 0px;
 }
+.member>.column>.column>img.ui.image {
+	display: inline-block;
+}
+
+.photo{
+	width: 140px;
+	height: 140px;
+}
 
 .ui.segment.member{
 	background-image: url(../pic/member-bg.png);
 	background-repeat: no-repeat; 
 	background-size: 100%;
 	padding-top: 30px;
-	padding-bottom: 100px;
-	padding-left: 20%;
-	padding-right: 20%;
 }
 .ui.segment.summary{
 	background-image: url(../pic/summary-bg.png);
 	background-repeat: no-repeat; 
 	background-size: 100%;
-	padding-left: 20%;
-	padding-right: 20%;
 }
 .container>h2{
-	padding-top: 30px;
-	padding-bottom: 30px;
 	font-weight: bold;
 }
 
 .container{
-	text-align: center;
 	width:100%;
 }
-.container>p{
-	margin-left:200px;
-	margin-right: 200px; 
-	line-height: 2em;
+@media print{
+	#main_menu{
+		display: none;
+	}
+
+}
+@media screen{
+	.container>h2{
+		padding-top: 30px;
+		padding-bottom: 30px;
+	}
+	.segment.link{
+		display: none;
+	}
+	.container{
+		text-align: center;
+	}
+	.masthead.segment>.information{
+		padding-top: 150px;
+		padding-bottom: 30px;
+	}
+	.masthead.segment {
+		text-align: center;
+		background-image: url(../pic/landing-bg.jpg);
+		background-repeat: no-repeat; 
+		-webkit-background-size: cover;
+		background-size: cover;
+		margin: 0em;
+		height:500px;
+	}
+	.ui.segment.member, .ui.segment.summary{
+		padding-left: 20%;
+		padding-right: 20%;
+		padding-bottom: 100px;
+	}
+	.container>p{
+		margin-left:200px;
+		margin-right: 200px; 
+		line-height: 2em;
+	}
 }
