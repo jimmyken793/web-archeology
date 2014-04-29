@@ -69,14 +69,14 @@ body {
 		margin: 0em;
 		height:500px;
 	}
-	.ui.segment.member, .ui.segment.summary{
+	.ui.segment.intro, .ui.segment.member, .ui.segment.summary{
 		padding-left: 20%;
 		padding-right: 20%;
 		padding-bottom: 100px;
+		line-height: 2em;
 	}
 	.container>p{
 		margin-left:200px;
 		margin-right: 200px; 
-		line-height: 2em;
 	}
 }
