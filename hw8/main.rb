@@ -5,6 +5,10 @@ get '/' do
 	erb :index, :layout => :main_layout
 end
 
+get '/1' do
+	erb :index1, :layout => :main_layout
+end
+
 get '/a' do
 	@songs = Song.all(:fields => [:language], :unique => true, :order => [:language.asc])
 	erb :a, :layout => :main_layout
@@ -58,4 +62,14 @@ get '/k' do
 	@songs = Song.all(:name.like=>"%愛%") + Song.all(:name.like=>"%恨%")
 	erb :k, :layout => :main_layout
 end
+
+get '/2' do
+	@singers = Singer.all(:conditions=>['(select count(distinct Language) from Song where SingerSSN = Singer.SSN) >=2'])
+	@songs = Song.all(:conditions=>['(select count(*) from Midi where SongSSN = Song.SSN) >= 2'])
+	@midis = Midi.all(:song=>{:singer=>{:name=>'伍佰'}})
+	@count = Singer.all(:gender=>"男").count
+	@midis1 = Midi.all(:song=>{:singer=>{:gender=>"女"}})
+	erb :index2, :layout => :main_layout
+end
+
 

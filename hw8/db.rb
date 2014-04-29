@@ -1,7 +1,7 @@
 require 'data_mapper'
 
 DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/song.sqlite")
-
+DataMapper::Logger.new(IO, :debug)
 class Midi
   include DataMapper::Resource
   belongs_to :song, 'Song'

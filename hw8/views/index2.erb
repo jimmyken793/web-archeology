@@ -1,0 +1,41 @@
+<h1>唱超過兩種語言的演出者</h1>
+<ul>
+<% @singers.each{ |s| %>
+<li>
+	<p><%=s.name%></p>
+</li>
+<% } %>
+</ul>
+<h1>有超過兩個Midi檔案的歌曲</h1>
+<ul>
+<% @songs.each{ |s| %>
+<li>
+	<p><%=s.name%></p>
+	<ul>
+	<% s.midis.each{|midi|%>
+	<li><%=midi.path%></li>
+	<%}%>
+	</ul>
+</li>
+<% } %>
+</ul>
+<h1>伍佰的所有Midi檔</h1>
+<ul>
+<% @midis.each{ |s| %>
+<li>
+	<p><%=s.path%></p>
+</li>
+<% } %>
+</ul>
+<h1>男性演出者的數量</h1>
+<p><%=@count%></p>
+<h1>女性演出者的所有Midi檔</h1>
+<ul>
+<% @midis1.each{ |s| %>
+<li>
+	<p><%=s.path%></p>
+</li>
+<% } %>
+</ul>
+
+<a href="/1">Back</a>
