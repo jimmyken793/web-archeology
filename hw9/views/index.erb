@@ -1,0 +1,89 @@
+<select name="langs" id="langs" size="10">
+</select>
+<select name="singers" id="singers" size="10"></select>
+<select name="songs" id="songs" size="10"></select>
+<p>MIDI網址：</p><a id="midi_url" href="#"></a>
+<div><a href="#" id="stop">停止</a></div>
+<script>
+function getLangs(){
+	$.getJSON('/langs',function(singers){
+		$("#langs").empty();
+		var first = true;
+		singers.forEach(function(lang){
+			if(first){
+				getSingers(lang);
+				first = false;
+				$("#langs").append("<option value=\""+lang+"\" selected>"+lang+"</option>");
+			}else{
+				$("#langs").append("<option value=\""+lang+"\">"+lang+"</option>");
+			}
+		});
+	});
+
+}
+function getSingers(lang){
+	$.getJSON('/langs/'+lang+'/singers',function(singers){
+		$("#singers").empty();
+		var first = true;
+		singers.forEach(function(singer){
+			if(first){
+				getSongs(lang, singer.id)
+				first = false;
+				$("#singers").append("<option value=\""+singer.id+"\" selected>"+singer.name+"</option>");
+			}else{
+				$("#singers").append("<option value=\""+singer.id+"\">"+singer.name+"</option>");
+			}
+		});
+	});
+}
+function getSongs(lang, singer_id){
+	$.getJSON('/langs/'+lang+'/singers/'+singer_id+"/songs",function(songs){
+		$("#songs").empty();
+		var first = true;
+		songs.forEach(function(song){
+			if(first){
+				getMidis(song.id)
+				first = false;
+				$("#songs").append("<option value=\""+song.id+"\" selected>"+song.name+"</option>");
+			}else{
+				$("#songs").append("<option value=\""+song.id+"\">"+song.name+"</option>");
+			}
+		});
+	});
+}
+function getMidis(song_id){
+	$.getJSON('/songs/'+song_id+"/midis",function(midis){
+		$("#midis").empty();
+		if(midis.length>0){
+			$("#midi_url").text(midis[0].path).attr("href", "/"+midis[0].path).off("click").click(function(event){
+				event.preventDefault();
+				player = MIDI.Player;
+				player.timeWarp = 1; // speed the song is played back
+				player.loadFile("/"+midis[0].path, player.start);
+
+			});
+		}
+	});
+}
+$(function(){
+	getLangs();
+	$("#singers").change(function(){
+		MIDI.Player.stop();
+		getSongs($("#langs").val(), $("#singers").val());
+	});
+	$("#songs").change(function(){
+		MIDI.Player.stop();
+		getMidis($("#songs").val());
+	});
+
+	$("#langs").change(function(){
+		MIDI.Player.stop();
+		getSingers($("#langs").val());
+	})
+	$("#stop").click(function(event){
+		event.preventDefault();
+		MIDI.Player.stop();
+	});
+	
+})
+</script>
